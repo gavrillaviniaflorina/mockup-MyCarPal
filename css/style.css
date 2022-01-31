@@ -1,0 +1,136 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  grid-template-areas: "h settings" " bar bar";
+}
+header h3 {
+  grid-area: h;
+}
+header .searching-bar {
+  margin-bottom: 30px;
+  grid-area: bar;
+  align-self: center;
+}
+header .settings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  justify-content: space-around;
+  align-items: center;
+  grid-area: settings;
+}
+header svg {
+  width: 20px;
+  height: 20px;
+}
+
+aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 100px 1fr;
+  grid-template-areas: "h1 h1" "ul1 but1" "result wid";
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+aside h1 {
+  grid-area: h1;
+  text-align: center;
+}
+aside ul {
+  grid-area: ul1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+aside button {
+  grid-area: but1;
+  height: 50px;
+  align-self: center;
+}
+aside .result {
+  grid-area: result;
+}
+aside img {
+  width: 80%;
+  margin-top: 50px;
+}
+aside .car-widget {
+  grid-area: wid;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.car {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr 50px 50px 50px;
+  grid-template-areas: "den den den" "img1 img1 img1" "ti ti ti" "offer offer offer" "wish wish wish";
+  background-color: #d4f0c7;
+  width: 80%;
+  margin: auto;
+  border-radius: 20px;
+}
+.car .h3 {
+  grid-area: den;
+  margin: auto;
+}
+.car img {
+  grid-area: img1;
+  width: 200px;
+  margin: auto;
+}
+.car p {
+  grid-area: ti;
+  margin: auto;
+}
+.car .offer {
+  grid-area: offer;
+  width: 40%;
+  margin: auto;
+  border-radius: 20px;
+}
+.car .wish {
+  grid-area: wish;
+  width: 40%;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: none;
+  justify-content: space-around;
+  align-items: center;
+  grid-gap: 20px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "electric electric electric" " hybrid  hybrid  hybrid" "petrol petrol petrol";
+}
+main .electric {
+  grid-area: electric;
+}
+main .hybrid {
+  grid-area: hybrid;
+}
+main .petrol {
+  grid-area: petrol;
+}
+
+@media (min-width: 720px) {
+  main {
+    grid-template-areas: "electric electric electric" " hybrid  hybrid  hybrid" "petrol petrol petrol";
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,35 @@
+.car {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 50px 50px 50px;
+    grid-template-areas: 'den den den' 'img1 img1 img1' 'ti ti ti' 'offer offer offer' 'wish wish wish';
+    background-color: rgb(212, 240, 199);
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    & .h3 {
+        grid-area: den;
+        margin: auto;
+    }
+    & img {
+        grid-area: img1;
+        width: 200px;
+        margin: auto;
+    }
+    & p {
+        grid-area: ti;
+        margin: auto;
+    }
+    & .offer {
+        grid-area: offer;
+        width: 40%;
+        margin: auto;
+        border-radius: 20px;
+    }
+    & .wish {
+        grid-area: wish;
+        width: 40%;
+        margin: auto;
+        border-radius: 20px;
+    }
+}

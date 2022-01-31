@@ -1,0 +1,5 @@
+@import './car.scss';
+.type {
+    @include flexy(flex, column, none, space-around, center);
+    grid-gap: 20px;
+}

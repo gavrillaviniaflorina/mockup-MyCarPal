@@ -1,0 +1,35 @@
+aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 100px 1fr;
+    grid-template-areas: 'h1 h1' 'ul1 but1' 'result wid';
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 20px;
+    & h1 {
+        grid-area: h1;
+        text-align: center;
+    }
+    & ul {
+        grid-area: ul1;
+        @include flexy(flex, row, none, space-around, center);
+        list-style: none;
+    }
+    & button {
+        grid-area: but1;
+        height: 50px;
+        align-self: center;
+    }
+    & .result {
+        grid-area: result;
+    }
+    & img {
+        width: 80%;
+        margin-top: 50px;
+    }
+    & .car-widget {
+        grid-area: wid;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

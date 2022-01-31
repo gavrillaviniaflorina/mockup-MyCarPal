@@ -1,0 +1,24 @@
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    grid-template-areas: 'h settings' ' bar bar';
+    & h3 {
+        grid-area: h;
+        ;
+    }
+    & .searching-bar {
+        margin-bottom: 30px;
+        grid-area: bar;
+        align-self: center;
+    }
+    & .settings {
+        @include flexy(flex, row, none, space-around, center);
+        grid-area: settings;
+    }
+    & svg {
+        width: 20px;
+        height: 20px;
+    }
+}
