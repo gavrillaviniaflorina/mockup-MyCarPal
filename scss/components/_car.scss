@@ -1,20 +1,27 @@
 .car {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 1fr 50px 50px 50px;
-    grid-template-areas: 'den den den' 'img1 img1 img1' 'ti ti ti' 'offer offer offer' 'wish wish wish';
+    grid-template-columns: 1fr 0.3fr;
+    grid-template-rows: 0.7fr 50px 50px 50px;
+    grid-template-areas: 'img1 img1' 'den svg' 'ti ti' 'offer offer';
     background-color: rgb(212, 240, 199);
-    width: 80%;
+    grid-gap: 10px;
+    width: 40%;
+    height: 50%;
     margin: auto;
+    margin-top: 25px;
+    position: relative;
     border-radius: 20px;
-    & .h3 {
+    & h3 {
         grid-area: den;
-        margin: auto;
+        text-align: center;
+        margin: 0px;
     }
     & img {
         grid-area: img1;
+        position: absolute;
+        bottom: 0px;
+        left: 20px;
         width: 200px;
-        margin: auto;
     }
     & p {
         grid-area: ti;
@@ -22,14 +29,23 @@
     }
     & .offer {
         grid-area: offer;
-        width: 40%;
+        width: 18%;
+        height: 40px;
         margin: auto;
-        border-radius: 20px;
+        border-radius: 10px;
+        text-align: center;
+        border-bottom-right-radius: 25px;
+        position: absolute;
+        bottom: -30px;
+        right: 10px;
+        background-color: black;
+        color: white;
     }
-    & .wish {
-        grid-area: wish;
-        width: 40%;
+    & svg {
+        grid-area: svg;
+        width: 20px;
+        height: 20px;
         margin: auto;
-        border-radius: 20px;
+        align-self: center;
     }
 }

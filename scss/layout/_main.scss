@@ -1,22 +1,11 @@
-@import '../components/car-types';
+@import '../components/most-used';
 main {
+    grid-area: main;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 'electric electric electric' ' hybrid  hybrid  hybrid' 'petrol petrol petrol';
-    & .electric {
-        grid-area: electric;
-    }
-    & .hybrid {
-        grid-area: hybrid;
-    }
-    & .petrol {
-        grid-area: petrol;
-    }
-}
-
-@media(min-width:720px) {
-    main {
-        grid-template-areas: 'electric electric electric' ' hybrid  hybrid  hybrid' 'petrol petrol petrol';
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "most present" "most present";
+    & & .present {
+        grid-area: pres;
     }
 }

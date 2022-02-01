@@ -1,0 +1,7 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    display: grid;
+    grid-template-rows: 100px 1fr 1fr;
+    grid-template-areas: 'head ' 'aside' 'main';
+    grid-gap: 80px;
+}
