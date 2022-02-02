@@ -4,14 +4,15 @@ aside {
     border-radius: 20px;
     width: 90%;
     margin: auto;
+    margin-top: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.8fr 50px 1fr 40px;
-    grid-template-areas: "h1 img" "all1 img" "opt img" "find img";
+    grid-template-rows: 0.8fr 50px 1fr;
+    grid-template-areas: "h1 img" "all1 all1" "opt opt";
     & h1 {
         grid-area: h1;
         margin-left: 20px;
-        font-size: 50px;
+        font-size: 30px;
     }
     & .all {
         grid-area: all1;
@@ -19,28 +20,30 @@ aside {
         width: 30%;
         background-color: black;
         color: white;
-        margin: auto;
+        //margin: auto;
         height: 80%;
+        align-self: flex-start;
     }
     & ul {
         grid-area: opt;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         margin: none;
         padding: 0px;
         justify-content: space-between;
+        align-items: center;
     }
     & select {
         border-radius: 20px;
     }
     & .find {
-        grid-area: find;
+        //  grid-area: find;
         background-color: black;
         color: white;
         width: 30%;
         margin: auto;
         border-radius: 20px;
-        height: 50%;
+        height: 20%;
     }
     & article {
         display: flex;
@@ -55,5 +58,20 @@ aside {
         grid-area: img;
         width: 90%;
         margin: auto;
+    }
+}
+
+@media(min-width: 720px) {
+    aside {
+        grid-template-areas: "h1 img" "all1 img" "opt img";
+        & h1 {
+            font-size: 50px;
+        }
+        & ul {
+            flex-direction: row;
+        }
+        & .find {
+            height: 30%;
+        }
     }
 }

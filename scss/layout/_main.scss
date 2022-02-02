@@ -1,11 +1,22 @@
-@import '../components/most-used';
-main {
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr 0.5fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "most present" "most present";
-    & & .present {
-        grid-area: pres;
+    @import '../components/most-used';
+    main {
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        grid-template-rows: 0.5fr 1fr;
+        grid-template-areas: "pres pres" "most most";
+        & .present {
+            grid-area: pres;
+            width: 80%;
+            margin: auto;
+        }
+        & h2 {
+            margin-top: 0px;
+        }
     }
-}
+    
+    @media(min-width:720px) {
+        main {
+            grid-template-areas: "most pres" "most pres";
+        }
+    }

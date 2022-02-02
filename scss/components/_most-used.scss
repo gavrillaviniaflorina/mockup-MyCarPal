@@ -2,6 +2,15 @@
 .most-used {
     grid-area: most;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media(min-width:720px) {
+    .most-used {
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: auto;
+    }
 }

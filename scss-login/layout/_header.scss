@@ -27,7 +27,11 @@ header {
         border-radius: 10px;
     }
     & .settings {
-        @include flexy(flex, row, none, space-around, center);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        // @include flexy(flex, row, none, space-around, center);
         grid-area: settings;
     }
     & svg {
