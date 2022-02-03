@@ -8,7 +8,7 @@ aside {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.8fr 50px 1fr;
-  grid-template-areas: "h1 img" "all1 all1" "opt opt";
+  grid-template-areas: "h1 img" "all1 all1" "sort sort";
 }
 aside h1 {
   grid-area: h1;
@@ -24,11 +24,17 @@ aside .all {
   height: 80%;
   align-self: flex-start;
 }
+aside .sort {
+  grid-area: sort;
+  display: flex;
+  flex-direction: column;
+}
 aside ul {
   grid-area: opt;
   display: flex;
   flex-direction: column;
   margin: none;
+  margin-left: 2%;
   padding: 0px;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +67,7 @@ aside img {
 
 @media (min-width: 720px) {
   aside {
-    grid-template-areas: "h1 img" "all1 img" "opt img";
+    grid-template-areas: "h1 img" "all1 img" "sort img";
   }
   aside h1 {
     font-size: 50px;

@@ -35,6 +35,18 @@
         color: white;
         align-self: center;
     }
+    & .social {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    & svg {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media(min-width:720px) {

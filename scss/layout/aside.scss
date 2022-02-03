@@ -8,7 +8,7 @@ aside {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.8fr 50px 1fr;
-    grid-template-areas: "h1 img" "all1 all1" "opt opt";
+    grid-template-areas: "h1 img" "all1 all1" "sort sort";
     & h1 {
         grid-area: h1;
         margin-left: 20px;
@@ -24,11 +24,17 @@ aside {
         height: 80%;
         align-self: flex-start;
     }
+    & .sort {
+        grid-area: sort;
+        display: flex;
+        flex-direction: column;
+    }
     & ul {
         grid-area: opt;
         display: flex;
         flex-direction: column;
         margin: none;
+        margin-left: 2%;
         padding: 0px;
         justify-content: space-between;
         align-items: center;
@@ -37,7 +43,6 @@ aside {
         border-radius: 20px;
     }
     & .find {
-        //  grid-area: find;
         background-color: black;
         color: white;
         width: 30%;
@@ -63,7 +68,7 @@ aside {
 
 @media(min-width: 720px) {
     aside {
-        grid-template-areas: "h1 img" "all1 img" "opt img";
+        grid-template-areas: "h1 img" "all1 img" "sort img";
         & h1 {
             font-size: 50px;
         }

@@ -356,6 +356,7 @@ header {
 }
 header h3 {
   grid-area: h;
+  margin-left: 5%;
 }
 header .searching-bar {
   margin-bottom: 30px;
@@ -403,7 +404,7 @@ aside {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.8fr 50px 1fr;
-  grid-template-areas: "h1 img" "all1 all1" "opt opt";
+  grid-template-areas: "h1 img" "all1 all1" "sort sort";
 }
 aside h1 {
   grid-area: h1;
@@ -419,11 +420,17 @@ aside .all {
   height: 80%;
   align-self: flex-start;
 }
+aside .sort {
+  grid-area: sort;
+  display: flex;
+  flex-direction: column;
+}
 aside ul {
   grid-area: opt;
   display: flex;
   flex-direction: column;
   margin: none;
+  margin-left: 2%;
   padding: 0px;
   justify-content: space-between;
   align-items: center;
@@ -456,7 +463,7 @@ aside img {
 
 @media (min-width: 720px) {
   aside {
-    grid-template-areas: "h1 img" "all1 img" "opt img";
+    grid-template-areas: "h1 img" "all1 img" "sort img";
   }
   aside h1 {
     font-size: 50px;
@@ -521,6 +528,9 @@ aside img {
 }
 
 @media (min-width: 720px) {
+  .car {
+    margin-bottom: 0px;
+  }
   .car img {
     top: -40%;
     left: 20%;
@@ -533,6 +543,16 @@ aside img {
   flex-direction: column;
   justify-content: space-between;
 }
+.most-used .mobile {
+  align-self: center;
+  margin-bottom: 50px;
+  margin-top: 5px;
+}
+.most-used .tablet {
+  display: none;
+  align-self: center;
+  margin-left: 10px;
+}
 
 @media (min-width: 720px) {
   .most-used {
@@ -540,6 +560,12 @@ aside img {
     justify-content: space-evenly;
     width: 100%;
     margin: auto;
+  }
+  .most-used .tablet {
+    display: initial;
+  }
+  .most-used .mobile {
+    display: none;
   }
 }
 main {

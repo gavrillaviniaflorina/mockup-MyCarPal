@@ -1,16 +1,32 @@
-@import './car.scss';
-.most-used {
-    grid-area: most;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-@media(min-width:720px) {
+    @import './car.scss';
     .most-used {
-        flex-direction: row;
-        justify-content: space-evenly;
-        width: 100%;
-        margin: auto;
+        grid-area: most;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        & .mobile {
+            align-self: center;
+            margin-bottom: 50px;
+            margin-top: 5px;
+        }
+        & .tablet {
+            display: none;
+            align-self: center;
+            margin-left: 10px;
+        }
     }
-}
+    
+    @media(min-width:720px) {
+        .most-used {
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            margin: auto;
+            & .tablet {
+                display: initial;
+            }
+            & .mobile {
+                display: none;
+            }
+        }
+    }
