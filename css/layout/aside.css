@@ -64,6 +64,13 @@ aside img {
   width: 90%;
   margin: auto;
 }
+aside .labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 120%;
+}
 
 @media (min-width: 720px) {
   aside {

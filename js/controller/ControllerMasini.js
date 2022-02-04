@@ -12,7 +12,7 @@ export default class ControllerMasini {
 
         cars.forEach(element => {
 
-            this.list.push(new Masina(element.id, element.marca, element.model, element.an, element.tip)); //sau {element}.{element}...
+            this.list.push(new Masina(element.id, element.marca, element.model, element.an, element.tip, element.putere)); //sau {element}.{element}...
 
         });
 
@@ -70,6 +70,9 @@ export default class ControllerMasini {
             if (masina.tip != "" && masina.tip) {
                 this.list[position].tip = masina.tip;
             }
+            if (masina.putere != "" && masina.putere) {
+                this.list[position].putere = masina.putere;
+            }
 
 
 
@@ -96,4 +99,30 @@ export default class ControllerMasini {
     }
 
 
+
+    allBrands = () => {
+
+        let brands = [];
+        for (let i = 0; i < this.list.length; i++) {
+
+            if (!brands.includes(this.list[i].marca)) {
+                brands.push(this.list[i].marca);
+
+            }
+        }
+
+        return brands;
+    }
+
+
+    allPowers = () => {
+        let powers = [];
+
+        for (let i = 0; i < rhis.list[i].length; i++) {
+            if (!powers.includes(this.list[i].putere)) {
+                powers.push(this.list[i].putere);
+            }
+        }
+        return powers;
+    }
 }

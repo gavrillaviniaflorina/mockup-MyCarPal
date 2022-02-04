@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+import ControllerMasini from "../controller/ControllerMasini.js";
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Document</title>
-</head>
+class Home {
 
-<body>
-    <header>
+    constructor() {
+
+
+        this.container = document.querySelector(".container");
+
+        this.createHeader();
+        this.createAside();
+        this.createMain();
+    }
+
+
+    createHeader = () => {
+        let header = document.createElement("header");
+        header.innerHTML = `
         <h3>MyCarPal</h3>
         <section class="settings">
 
@@ -39,11 +39,20 @@
             <input class="search">
             <button>Search</button>
         </section>
-    </header>
+        `;
 
-    <aside>
 
-        <h1>Find the best car for you in just 10 minutes</h1>
+
+        this.container.appendChild(header);
+
+
+    }
+
+    createAside = () => {
+        let aside = document.createElement("aside");
+
+        aside.innerHTML = `  
+          <h1>Find the best car for you in just 10 minutes</h1>
         <button class="all">View all cars</button>
 
         <img src="../img/popular-car.png">
@@ -61,30 +70,19 @@
             </optgroup>
         </select>
                 </article>
-                <article>
-                    <!-- <label for="power" type>Power</label>
-                    <select id="power">
-            <optgroup label="power">
-                <option> less than 60 CP </option>
-                <option>less than 80 CP</option>
-                <option>less than 100CP</option>
-            </optgroup> -->
-                    </select>
-                    <section>
-                        <input type="range" id="cowbell" name="cowbell" min="0" max="100" value="90" step="10">
-                        <label for="cowbell">Cowbell</label>
-                    </section>
-                </article>
+                <article class="power-bar">
+                <section class="labels">
+                <label  for="power">Power</label>
+                </section>
+                
+                <input type="range" id="power" name="power" min="0" max="100" class="power" value="90" step="10">
+                  
+                    </article>
                 <article>
                     <label for="brand" type>Brand</label>
-                    <select id="brand" class="brand">
-            <optgroup label="brands">
-                <option> Citroen </option>
-                <option>Dacia</option>
-                <option>Mercedes</option>
-                <option> BMW </option>
-                <option>Opel</option>
-                <option>Audi</option>
+                    <select id="brand" class="brands">
+            <optgroup label="brand">
+               
             </optgroup>
         </select>
                 </article>
@@ -92,15 +90,43 @@
             </ul>
             <button class="find">Find</button>
         </section>
+        `;
 
 
 
 
+        this.container.appendChild(aside);
 
-    </aside>
+        let power = document.querySelector(".power");
 
-    <main>
 
+        let min = document.createElement("label");
+        min.htmlFor = 'power';
+        min.innerHTML = `${power.min}`;
+
+        let max = document.createElement("label");
+        max.htmlFor = 'power';
+        max.innerHTML = `${power.max}`;
+
+
+        let bar = document.querySelector(".labels");
+
+        this.populateBrands();
+        bar.insertBefore(min, bar.firstElementChild);
+        bar.appendChild(max);
+
+
+
+
+        console.log(bar);
+
+
+    }
+
+    createMain = () => {
+
+        let main = document.createElement('main');
+        main.innerHTML = `
         <section class="most-used">
             <i class="fas fa-arrow-up mobile"></i>
             <i class="fas fa-arrow-left tablet"></i>
@@ -221,11 +247,32 @@
         </section>
     </main>
 
+`;
+        this.container.appendChild(main);
+    }
 
 
-    <script src="../js/helpers.js"></script>
+
+    populateBrands = () => {
+        let controllerMasini = new ControllerMasini();
+
+        let brands = controllerMasini.allBrands();
+
+        let select = document.querySelector(".brands");
+
+        for (let i = 0; i < brands.length; i++) {
+
+            let op = document.createElement("option");
+            op.innerHTML = `${brands[i]}`;
+
+            select.appendChild(op);
+
+        }
+    }
 
 
-</body>
 
-</html>
+}
+
+
+export default Home;

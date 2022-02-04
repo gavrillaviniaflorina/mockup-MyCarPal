@@ -337,7 +337,7 @@ template {
   display: none;
 }
 
-body {
+div {
   font-family: "Ubuntu", sans-serif;
   display: grid;
   grid-template-rows: 100px 0.5fr 1fr;
@@ -460,6 +460,13 @@ aside img {
   width: 90%;
   margin: auto;
 }
+aside .labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 120%;
+}
 
 @media (min-width: 720px) {
   aside {
@@ -483,6 +490,7 @@ aside img {
   background-color: #d4f0c7;
   grid-gap: 10px;
   width: 40%;
+  max-width: 200px;
   height: 40%;
   margin: auto;
   margin-bottom: 100px;
@@ -530,6 +538,7 @@ aside img {
 @media (min-width: 720px) {
   .car {
     margin-bottom: 0px;
+    max-width: 250px;
   }
   .car img {
     top: -40%;
