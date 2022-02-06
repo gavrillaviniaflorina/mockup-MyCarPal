@@ -1,4 +1,4 @@
-aside {
+.aside-home {
     background-color: rgb(212, 240, 199);
     grid-area: aside;
     border-radius: 20px;
@@ -74,7 +74,7 @@ aside {
 }
 
 @media(min-width: 720px) {
-    aside {
+    .aside-home {
         grid-template-areas: "h1 img" "all1 img" "sort img";
         & h1 {
             font-size: 50px;

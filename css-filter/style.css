@@ -337,16 +337,13 @@ template {
   display: none;
 }
 
-.home-sweet-home {
-  font-family: "Ubuntu", sans-serif;
-  display: grid;
-  grid-template-rows: 100px 0.5fr 1fr;
-  grid-template-areas: "head " "aside" "main";
-  grid-gap: 70px;
-  box-sizing: border-box;
+.result-filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.header-home {
+.header-filter {
   grid-area: head;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -354,11 +351,11 @@ template {
   width: 100%;
   grid-template-areas: "h bar" " settings settings";
 }
-.header-home h3 {
+.header-filter h3 {
   grid-area: h;
   margin-left: 5%;
 }
-.header-home .searching-bar {
+.header-filter .searching-bar {
   margin-bottom: 30px;
   grid-area: bar;
   align-self: center;
@@ -366,122 +363,71 @@ template {
   flex-direction: row;
   margin: auto;
 }
-.header-home button {
+.header-filter button {
   background-color: #d4f0c7;
   border-radius: 10px;
   color: white;
   border: none;
 }
-.header-home input {
+.header-filter input {
   width: 60%;
   border-radius: 10px;
 }
-.header-home .settings {
+.header-filter .settings {
   display: flex;
   flex-direction: row;
-  flex-wrap: none;
   justify-content: space-around;
   align-items: center;
   grid-area: settings;
 }
-.header-home svg {
+.header-filter svg {
   width: 20px;
   height: 20px;
 }
 
 @media (min-width: 720px) {
-  .header-home {
+  .header-filter {
     grid-template-areas: "h settings" " bar bar";
   }
 }
-.aside-home {
-  background-color: #d4f0c7;
-  grid-area: aside;
-  border-radius: 20px;
-  width: 90%;
-  margin: auto;
-  margin-top: 0;
+.main-result-Filter {
+  grid-area: main;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.8fr 50px 1fr;
-  grid-template-areas: "h1 img" "all1 all1" "sort sort";
-}
-.aside-home h1 {
-  grid-area: h1;
-  margin-left: 20px;
-  font-size: 30px;
-}
-.aside-home .all {
-  grid-area: all1;
-  border-radius: 20px;
-  width: 30%;
-  background-color: black;
-  color: white;
-  height: 80%;
-  align-self: flex-start;
-}
-.aside-home .sort {
-  grid-area: sort;
-  display: flex;
-  flex-direction: column;
-}
-.aside-home ul {
-  grid-area: opt;
-  display: flex;
-  flex-direction: column;
-  margin: none;
-  margin-left: 2%;
-  padding: 0px;
-  justify-content: space-between;
-  align-items: center;
-}
-.aside-home select {
-  border-radius: 20px;
-}
-.aside-home .find {
-  background-color: black;
-  color: white;
-  width: 30%;
-  margin: auto;
-  border-radius: 20px;
-  height: 20%;
-}
-.aside-home article {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.aside-home select {
-  height: 20px;
-}
-.aside-home img {
-  grid-area: img;
-  width: 90%;
-  margin: auto;
-}
-.aside-home .labels {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 120%;
+  grid-template-rows: repeat(5, 1fr);
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 720px) {
-  .aside-home {
-    grid-template-areas: "h1 img" "all1 img" "sort img";
-  }
-  .aside-home h1 {
-    font-size: 50px;
-  }
-  .aside-home ul {
-    flex-direction: row;
-  }
-  .aside-home .find {
-    height: 30%;
+  .main-result-Filter {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
   }
 }
+@media (min-width: 1024px) {
+  .main-result-Filter {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+.buttons-filter {
+  width: 100%;
+  grid-area: buttons;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.buttons-filter button {
+  width: 50px;
+  height: 90%;
+  background-color: #d4f0c7;
+  color: white;
+  border-radius: 10px;
+}
+
 .car {
   display: grid;
   grid-template-columns: 1fr 0.3fr;
@@ -489,9 +435,9 @@ template {
   grid-template-areas: "den svg" "ti ti" "offer offer";
   background-color: #d4f0c7;
   grid-gap: 10px;
-  width: 40%;
+  width: 50%;
   max-width: 200px;
-  height: 40%;
+  height: 60%;
   margin: auto;
   margin-bottom: 100px;
   position: relative;
@@ -538,64 +484,13 @@ template {
 @media (min-width: 720px) {
   .car {
     margin-bottom: 0px;
-    max-width: 250px;
+    max-width: 200px;
+    height: 80%;
   }
   .car img {
     top: -40%;
     left: 20%;
     width: 70%;
-  }
-}
-.most-used {
-  grid-area: most;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.most-used .mobile {
-  align-self: center;
-  margin-bottom: 50px;
-  margin-top: 5px;
-}
-.most-used .tablet {
-  display: none;
-  align-self: center;
-  margin-left: 10px;
-}
-
-@media (min-width: 720px) {
-  .most-used {
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    margin: auto;
-  }
-  .most-used .tablet {
-    display: initial;
-  }
-  .most-used .mobile {
-    display: none;
-  }
-}
-.main-home {
-  grid-area: main;
-  display: grid;
-  grid-template-columns: 1fr 0.5fr;
-  grid-template-rows: 0.5fr 1fr;
-  grid-template-areas: "pres pres" "most most";
-}
-.main-home .present {
-  grid-area: pres;
-  width: 80%;
-  margin: auto;
-}
-.main-home h2 {
-  margin-top: 0px;
-}
-
-@media (min-width: 720px) {
-  .main-home {
-    grid-template-areas: "most pres" "most pres";
   }
 }
 

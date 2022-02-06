@@ -1,4 +1,10 @@
 body {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.all-cars-here {
+    width: 100%;
     display: grid;
     grid-gap: 50px;
     grid-template-columns: 150px 1fr;
@@ -7,7 +13,7 @@ body {
 }
 
 @media(min-width:720px) {
-    body {
+    .all-cars-here {
         grid-template-areas: 'head head' 'aside main' 'aside main' 'buttons buttons';
     }
 }

@@ -1,5 +1,5 @@
     @import '../components/most-used';
-    main {
+    .main-home {
         grid-area: main;
         display: grid;
         grid-template-columns: 1fr 0.5fr;
@@ -16,7 +16,7 @@
     }
     
     @media(min-width:720px) {
-        main {
+        .main-home {
             grid-template-areas: "most pres" "most pres";
         }
     }

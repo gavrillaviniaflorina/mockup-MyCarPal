@@ -1,42 +1,36 @@
-import ControllerMasini from "../controller/ControllerMasini.js";
-
-import AllCars from "./AllCars.js";
+import Home from "./Home.js";
 import Filter from "./ResultFilter.js";
-import ResultFilter from "./ResultFilter.js";
 
-class Home {
-
+class AllCars {
     constructor() {
-
-
         this.containerRoot = document.querySelector(".container");
-        this.containerRoot.innerHTML = ``;
         this.container = document.createElement("div");
-        this.container.classList = "home-sweet-home";
+        this.container.classList = "all-cars-here";
+
+        this.containerRoot.innerHTML = ``;
         this.containerRoot.appendChild(this.container);
+
         this.createHeader();
         this.createAside();
         this.createMain();
+        this.createButtons();
 
-        this.btnAllCars = document.querySelector(".all");
+        this.btnHome = document.querySelector(".home-button");
+        this.btnHome.addEventListener("click", this.handlerReturnHome);
 
-        this.btnAllCars.addEventListener("click", this.handleClick);
 
-
-        this.btnFind = document.querySelector(".find");
-        this.btnFind.addEventListener("click", this.handleFilter);
-
+        this.btnFilter = document.querySelector(".find");
+        this.btnFilter.addEventListener("click", this.handlerFilter);
     }
-
 
     createHeader = () => {
         let header = document.createElement("header");
-        header.classList = "header-home";
+        header.classList = "header-all-cars";
         header.innerHTML = `
         <h3>MyCarPal</h3>
         <section class="settings">
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 122.88 114.45">
+            <svg class="home-button" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 122.88 114.45">
             <path d="M110.8 107.88v4.48c0 1.16-.94 2.09-2.09 2.09h-95.1a2.09 2.09 0 01-2.09-2.09V58.9c-2.34.9-4.53.92-6.35.3a7.521 7.521 0 01-3.5-2.45A7.721 7.721 0 01.06 52.8c-.26-2.31.43-4.92 2.4-7.37.1-.12.21-.24.34-.34L59.85.55c.74-.68 1.88-.75 2.7-.11l57.19 44.46c.09.07.17.14.25.23 2.65 2.85 3.31 6.01 2.67 8.68a8.035 8.035 0 01-1.82 3.48c-.87.98-1.98 1.74-3.24 2.19-2 .72-4.38.7-6.79-.44v48.84h-.01zM5.57 48.23c-1.11 1.45-1.5 2.9-1.37 4.12.08.7.33 1.32.73 1.82.39.49.92.86 1.56 1.08 1.09.37 2.5.27 4.11-.49l49.79-37.88c.77-.59 1.82-.56 2.55.01l48.37 37.6c.02.02.04.04.07.05 1.77 1.28 3.47 1.48 4.79 1.01a3.72 3.72 0 001.55-1.05c.42-.47.72-1.03.87-1.66.33-1.38-.07-3.08-1.55-4.74L61.27 4.74 5.57 48.23zM29.6 75.49h26.7c1.04 0 1.89.83 1.89 1.85v20.89c0 1.02-.85 1.85-1.89 1.85H29.6c-1.04 0-1.89-.83-1.89-1.85V77.34a1.88 1.88 0 011.89-1.85zm38.13-1.84H92.8c1.12 0 2.03.94 2.03 2.1v34.52h11.78v-53.7c0-.14.01-.27.04-.4L61.64 21.18 15.63 56.19c.05.17.07.35.07.54v53.53h50V75.74c0-1.16.91-2.09 2.03-2.09zm23.04 4.19h-21v32.38h21V77.84zM54.41 89.63H44.5v6.75h9.91v-6.75zm-13.61 0h-9.31v6.75h9.31v-6.75zm-9.31-3.7h9.31v-6.74h-9.31v6.74zm13.01 0h9.91v-6.74H44.5v6.74zm16.38-49.6c3.55 0 6.43 2.88 6.43 6.43s-2.88 6.43-6.43 6.43-6.43-2.88-6.43-6.43c0-3.56 2.88-6.43 6.43-6.43z" />
           </svg>
 
@@ -64,104 +58,83 @@ class Home {
 
 
     }
-
     createAside = () => {
         let aside = document.createElement("aside");
-        aside.classList = "aside-home";
+        aside.classList.add("aside-all-cars");
 
-        aside.innerHTML = `  
-          <h1>Find the best car for you in just 10 minutes</h1>
-        <button class="all">View all cars</button>
+        aside.innerHTML = `
+    
 
-        <img src="../img/popular-car.png">
 
-        <section class="sort">
+        <ul>
+            <article>
+                <label for="type" type>Type</label>
+                <select id="type">
+        <optgroup label="type">
+            <option>Electric</option>
+            <option>Hybrid</option>
+            <option>Petrol</option>
+        </optgroup>
+    </select>
+            </article>
+            <article>
 
-            <ul>
+                </select>
                 <article>
-                    <label for="type" type>Type</label>
-                    <select id="type">
-            <optgroup label="type">
-                <option>Electric</option>
-                <option>Hybrid</option>
-                <option>Petrol</option>
-            </optgroup>
-        </select>
-                </article>
-                <article class="power-bar">
-                <section class="labels">
-                <label  for="power">Power</label>
-                </section>
-                
-                <input type="range" id="power" name="power" min="0" max="100" class="power" value="90" step="10">
-                  
-                    </article>
-                <article>
-                    <label for="brand" type>Brand</label>
-                    <select id="brand" class="brands">
-            <optgroup label="brand">
-               
-            </optgroup>
-        </select>
-                </article>
+                    <label for="cowbell">Power</label>
+                    <input type="range" id="cowbell" name="cowbell" min="0" max="100" value="90" step="10">
 
-            </ul>
-            <button class="find">Find</button>
-        </section>
+                </article>
+            </article>
+            <article>
+                <label for="brand" type>Brand</label>
+                <select id="brand" class="brand">
+        <optgroup label="brands">
+            <option> Citroen </option>
+            <option>Dacia</option>
+            <option>Mercedes</option>
+            <option> BMW </option>
+            <option>Opel</option>
+            <option>Audi</option>
+        </optgroup>
+    </select>
+            </article>
+
+        </ul>
+        <button class="find">Find</button>
+
+
+
+
         `;
 
-
-
-
         this.container.appendChild(aside);
-
-        let power = document.querySelector(".power");
-
-
-        let min = document.createElement("label");
-        min.htmlFor = 'power';
-        min.innerHTML = `${power.min}`;
-
-        let max = document.createElement("label");
-        max.htmlFor = 'power';
-        max.innerHTML = `${power.max}`;
-
-
-        let bar = document.querySelector(".labels");
-
-        this.populateBrands();
-        bar.insertBefore(min, bar.firstElementChild);
-        bar.appendChild(max);
-
-
-
-
-        console.log(bar);
-
-
     }
 
     createMain = () => {
+        let main = document.createElement("main");
+        main.classList = "main-all-cars";
 
-        let main = document.createElement('main');
-        main.classList = "main-home";
         main.innerHTML = `
-        <section class="most-used">
-            <i class="fas fa-arrow-up mobile"></i>
-            <i class="fas fa-arrow-left tablet"></i>
-            <article class="car">
-                <h3>Dacia Spring</h3>
-                <?xml version="1.0" encoding="iso-8859-1"?>
+     
 
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
+   
+  
+
+
+    <article class="car">
+        <h3>Dacia Spring</h3>
+        <?xml version="1.0" encoding="iso-8859-1"?>
+
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
 <g>
-	<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
-		c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
-		l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
-		C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
-		s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
-		c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
-		C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+C444.801,187.101,434.001,213.101,414.401,232.701z"/>
 </g>
 <g>
 </g>
@@ -195,26 +168,27 @@ class Home {
 </g>
 </svg>
 
-                <img src="../img/popular-car.png">
-                <p>Electric car</p>
+        <img src="../img/popular-car.png">
+        <p>Electric car</p>
 
-                <button class="offer">Get offer</button>
+        <button class="offer">Get offer</button>
 
 
-            </article>
-            <article class="car">
-                <h3>Dacia Spring</h3>
-                <?xml version="1.0" encoding="iso-8859-1"?>
+    </article>
 
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
+    <article class="car">
+        <h3>Dacia Spring</h3>
+        <?xml version="1.0" encoding="iso-8859-1"?>
+
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
 <g>
-	<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
-		c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
-		l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
-		C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
-		s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
-		c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
-		C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+C444.801,187.101,434.001,213.101,414.401,232.701z"/>
 </g>
 <g>
 </g>
@@ -248,59 +222,205 @@ class Home {
 </g>
 </svg>
 
-                <img src="../img/popular-car.png">
-                <p>Electric car</p>
+        <img src="../img/popular-car.png">
+        <p>Electric car</p>
 
-                <button class="offer">Get offer</button>
+        <button class="offer">Get offer</button>
 
 
-            </article>
-            <i class="fas fa-arrow-down mobile"></i>
-            <i class="fas fa-arrow-right tablet"></i>
+    </article>
 
-        </section>
+    <article class="car">
+        <h3>Dacia Spring</h3>
+        <?xml version="1.0" encoding="iso-8859-1"?>
 
-        <section class="present">
-            <h2>We have the best cars ready for you</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis porro perspiciatis temporibus, neque eligendi pariatur exercitationem possimus atque sed quidem amet obcaecati provident nisi, molestiae harum quia magnam iure accusamus?</p>
-        </section>
-    </main>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
+<g>
+<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
 
-`;
+        <img src="../img/popular-car.png">
+        <p>Electric car</p>
+
+        <button class="offer">Get offer</button>
+
+
+    </article>
+
+    <article class="car">
+        <h3>Dacia Spring</h3>
+        <?xml version="1.0" encoding="iso-8859-1"?>
+
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
+<g>
+<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+        <img src="../img/popular-car.png">
+        <p>Electric car</p>
+
+        <button class="offer">Get offer</button>
+
+
+    </article>
+
+
+    <article class="car">
+        <h3>Dacia Spring</h3>
+        <?xml version="1.0" encoding="iso-8859-1"?>
+
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
+<g>
+<path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+        <img src="../img/popular-car.png">
+        <p>Electric car</p>
+
+        <button class="offer">Get offer</button>
+
+
+  
+        `;
+
         this.container.appendChild(main);
     }
 
+    createButtons = () => {
 
+        let buttons = document.createElement("div");
+        buttons.classList = 'buttons';
+        buttons.innerHTML = `
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        `;
 
-    populateBrands = () => {
-        let controllerMasini = new ControllerMasini();
-
-        let brands = controllerMasini.allBrands();
-
-        let select = document.querySelector(".brands");
-
-        for (let i = 0; i < brands.length; i++) {
-
-            let op = document.createElement("option");
-            op.innerHTML = `${brands[i]}`;
-
-            select.appendChild(op);
-
-        }
+        this.container.appendChild(buttons);
     }
 
-    handleClick = (e) => {
 
-        new AllCars();
+    handlerReturnHome = (e) => {
+        new Home();
     }
 
-    handleFilter = (e) => {
+
+    handlerFilter = (e) => {
         new Filter();
     }
-
-
-
 }
 
 
-export default Home;
+
+export default AllCars;
