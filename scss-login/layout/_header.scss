@@ -1,4 +1,4 @@
-header {
+.header-login {
     grid-area: head;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -42,7 +42,7 @@ header {
 }
 
 @media(min-width:720px) {
-    header {
+    .header-login {
         grid-template-areas: 'h settings' ' bar bar';
     }
 }

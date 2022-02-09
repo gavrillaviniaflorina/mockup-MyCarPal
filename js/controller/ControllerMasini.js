@@ -118,11 +118,25 @@ export default class ControllerMasini {
     allPowers = () => {
         let powers = [];
 
-        for (let i = 0; i < rhis.list[i].length; i++) {
+        for (let i = 0; i < this.list.length; i++) {
             if (!powers.includes(this.list[i].putere)) {
                 powers.push(this.list[i].putere);
             }
         }
         return powers;
+    }
+
+
+    typesForABrand = (brand) => {
+
+        let types = [];
+        for (let i = 0; i < this.list.length; i++) {
+            if (!types.includes(this.list[i].tip) && this.list[i].marca === brand) {
+                types.push(this.list[i].tip);
+            }
+        }
+
+        return types;
+
     }
 }

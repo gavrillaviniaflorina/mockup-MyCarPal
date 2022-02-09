@@ -1,6 +1,7 @@
 import ControllerMasini from "./js/controller/ControllerMasini.js";
 import Home from "./js/view/Home.js";
 import AllCars from "./js/view/AllCars.js";
+import Login from "./js/view/Login.js"
 
 
 
