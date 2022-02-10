@@ -1,4 +1,4 @@
-let mobileCanvas = document.getElementsByClassName("car-chart");
+let mobileCanvas = document.getElementsByClassName("mobile-chart");
 
 let mobileData = {
 
@@ -8,9 +8,9 @@ let mobileData = {
 
     }],
     labels: [
-        "Confort",
-        "Power",
-        "Eco-friendly",
+        "Desktop",
+        "Tablet",
+        "Phone",
 
     ],
 
