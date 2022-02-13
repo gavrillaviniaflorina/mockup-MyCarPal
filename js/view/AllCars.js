@@ -77,14 +77,14 @@ class AllCars {
 
         <ul>
         <article>
-            <label for="type" type>Type</label>
+            <label for="type">Type</label>
             <select id="type" class="type">
-    <optgroup label="type"  class="typeA">
+   
     <option> </option>
     <option>motorina</option>
     <option>benzina</option>
     <option>hibrid</option>
-    </optgroup>
+   
 </select>
         </article>
         <article class="power-bar">
@@ -158,12 +158,15 @@ class AllCars {
             let select = document.querySelector(".type");
 
 
-            let child = select.firstElementChild;
+            let child = select.firstChild;
 
-            while (child) {
-                select.removeChild(child);
-                child = child.nextElementSibling;
+            while (select.firstChild) {
+
+                select.removeChild(select.firstChild);
+
+
             }
+
 
 
 
@@ -196,6 +199,7 @@ class AllCars {
 
             car.innerHTML = ` 
             <h3>${list[i].marca} ${list[i].model}</h3>
+           
             <?xml version="1.0" encoding="iso-8859-1"?>
     
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
@@ -316,10 +320,28 @@ class AllCars {
             let target = e.target;
 
             if (target.tagName == "BUTTON") {
-                new Car();
+
+                let parent = target.parentNode;
+
+
+                let need = parent.firstElementChild.textContent;
+                console.log(need);
+
+                let arr = need.split(' ');
+
+                let marca = arr[0];
+                let model = arr[1];
+                console.log(marca);
+                console.log(model);
+                let controller = new ControllerMasini();
+
+                new Car(controller.findId(marca, model));
             }
         })
     }
+
+
+
 
 }
 

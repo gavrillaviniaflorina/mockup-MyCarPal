@@ -1,7 +1,7 @@
 export default class Masina {
 
 
-    constructor(id, marca, model, an, tip, putere) {
+    constructor(id, marca, model, an, tip, putere, noUsers) {
 
         this.id = id;
         this.marca = marca;
@@ -9,6 +9,7 @@ export default class Masina {
         this.an = an;
         this.tip = tip;
         this.putere = putere;
+        this.noUsers = noUsers;
 
     }
 
@@ -21,6 +22,7 @@ export default class Masina {
         text += "Anul masinii este " + this.an + "\n";
         text += "Tipul masinii este " + this.tip + "\n";
         text += "Puterea masinii este " + this.putere + "\n";
+        text += "Masina a fost folosita de " + this.noUsers + "\n";
         return text;
     }
 

@@ -346,14 +346,14 @@ body {
   width: 100%;
   display: grid;
   grid-gap: 50px;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 100px 200px 1fr 50px;
   grid-template-areas: "head head" "aside aside" "main main" "buttons buttons";
 }
 
 @media (min-width: 720px) {
   .all-cars-here {
-    grid-template-areas: "head head" "aside main" "aside main" "buttons buttons";
+    justify-content: space-between;
   }
 }
 .header-all-cars {
@@ -420,7 +420,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0px;
-  justify-content: space-between;
   align-items: center;
 }
 .aside-all-cars select {
@@ -458,10 +457,12 @@ body {
 
 @media (min-width: 720px) {
   .aside-all-cars ul {
+    flex-direction: row;
     height: 60%;
   }
   .aside-all-cars .find {
-    width: 80%;
+    width: 50%;
+    margin-bottom: 10px;
   }
 }
 .main-all-cars {

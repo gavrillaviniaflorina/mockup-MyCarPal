@@ -7,13 +7,14 @@ body {
     width: 100%;
     display: grid;
     grid-gap: 50px;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 200px 1fr;
     grid-template-rows: 100px 200px 1fr 50px;
     grid-template-areas: 'head head' 'aside aside' 'main main' 'buttons buttons';
 }
 
 @media(min-width:720px) {
     .all-cars-here {
-        grid-template-areas: 'head head' 'aside main' 'aside main' 'buttons buttons';
+        // grid-template-areas: 'head head' 'aside main' 'main main' 'buttons buttons';
+        justify-content: space-between;
     }
 }

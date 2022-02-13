@@ -1,11 +1,12 @@
+import ControllerMasini from "../controller/ControllerMasini.js";
 import Home from "./Home.js";
 
 import Login from "./Login.js";
 class Car {
 
 
-    constructor() {
-
+    constructor(id) {
+        this.id = id;
         this.containerRoot = document.querySelector(".container");
         this.containerRoot.innerHTML = ``;
         this.container = document.createElement("div");
@@ -20,6 +21,7 @@ class Car {
 
         this.btnLogin = document.querySelector(".user-login");
         this.btnLogin.addEventListener("click", this.handlerLogin);
+        this.createChart();
 
     }
 
@@ -62,13 +64,17 @@ class Car {
     createMain() {
 
         let main = document.createElement("main");
+        let controllerMasini = new ControllerMasini();
 
+
+        let masina = controllerMasini.getCarById(this.id);
+        console.log(masina);
         main.classList = "main-car";
         main.innerHTML = `
         
         <img src="../img/popular-car.png">
 
-        <h1>Name of the car</h1>
+        <h1>${masina.marca}  ${masina.model}</h1>
 
         <section class="buttons">
             <button>Add to favorites</button>
@@ -102,6 +108,55 @@ class Car {
     handlerReturnHome = (e) => {
         new Home();
     }
+
+
+    createChart = () => {
+
+
+        let mobileCanvas = document.getElementsByClassName("mobile-chart");
+
+        let mobileData = {
+
+            datasets: [{
+                data: [1, 20, 56, ],
+                backgroundColor: ["#7476be", "blue", "green"],
+
+            }],
+            labels: [
+                "Desktop",
+                "Tablet",
+                "Phone",
+
+            ],
+
+
+        }
+
+        let mobileOptions = {
+
+
+            plugins: {
+
+                legend: {
+                    position: "right",
+                    labels: {
+                        boxWidth: 20,
+                        fontStyle: "bold"
+                    },
+                }
+            }
+        }
+        let mobileChart = new Chart(mobileCanvas, {
+            type: 'doughnut',
+            data: mobileData,
+            options: mobileOptions
+        });
+
+
+
+    }
+
+
 
 
 

@@ -49,14 +49,16 @@ export default class ControllerMasini {
 
     delete = (masina) => {
 
-        this.list.pop(masina);
+            this.list.pop(masina);
 
-        this.save();
-    }
-
+            this.save();
+        }
+        //{tip:"benzina"}
 
     update = (masina) => {
+
         let position = this.findPozById(masina.id);
+        console.log(masina.tip);
         if (position != -1) {
             if (masina.marca != "" && masina.marca) {
                 this.list[position].marca = masina.marca;
@@ -68,6 +70,7 @@ export default class ControllerMasini {
                 this.list[position].an = masina.an;
             }
             if (masina.tip != "" && masina.tip) {
+                console.log("aici");
                 this.list[position].tip = masina.tip;
             }
             if (masina.putere != "" && masina.putere) {
@@ -157,4 +160,47 @@ export default class ControllerMasini {
         return resultList;
 
     }
+
+    findId = (marca, model) => {
+
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].marca == marca && this.list[i].model == model) {
+
+                return this.list[i].id;
+            }
+
+
+        }
+
+        return -1;
+
+    }
+
+    getCarById = (id) => {
+
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].id == id) {
+
+                return this.list[i];
+            }
+
+        }
+
+        return null;
+
+    }
+
+    popular = () => {
+
+        let result = [];
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].noUsers > 50) {
+                result.push(this.list[i]);
+
+            }
+        }
+        return result;
+    }
+
+
 }
