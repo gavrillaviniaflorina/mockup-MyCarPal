@@ -139,4 +139,22 @@ export default class ControllerMasini {
         return types;
 
     }
+
+
+    filterMasini = (brand, type) => {
+
+        let resultList = [];
+        for (let i = 0; i < this.list.length; i++) {
+
+            if (this.list[i].marca === brand && this.list[i].tip == type) {
+
+
+                resultList.push(this.list[i]);
+
+            }
+        }
+
+        return resultList;
+
+    }
 }

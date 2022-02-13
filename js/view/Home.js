@@ -86,7 +86,10 @@ class Home {
                     <label for="type" type>Type</label>
                     <select id="type" class="type">
             <optgroup label="type"  class="typeA">
-            
+            <option> </option>
+            <option>motorina</option>
+            <option>benzina</option>
+            <option>hibrid</option>
             </optgroup>
         </select>
                 </article>
@@ -287,9 +290,9 @@ class Home {
             let foundTypes = controllerMasini.typesForABrand(brand);
 
 
-            let select = document.querySelector(".typeA");
+            let select = document.querySelector(".type");
 
-            console.log(select.firstElementChild);
+
             let child = select.firstElementChild;
 
             while (child) {
@@ -314,7 +317,6 @@ class Home {
 
 
     }
-
 
 
 
@@ -348,7 +350,13 @@ class Home {
     }
 
     handleFilter = (e) => {
-        new Filter();
+
+        let type = document.querySelector(".type");
+
+        let brand = document.querySelector(".brands");
+
+
+        new Filter(brand.value, type.value);
     }
 
     handlerLogin = (e) => {
