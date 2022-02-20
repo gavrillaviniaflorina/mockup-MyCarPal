@@ -12,7 +12,7 @@ export default class ControllerMasini {
 
         cars.forEach(element => {
 
-            this.list.push(new Masina(element.id, element.marca, element.model, element.an, element.tip, element.putere)); //sau {element}.{element}...
+            this.list.push(new Masina(element.id, element.marca, element.model, element.an, element.tip, element.power, element.noUsers)); //sau {element}.{element}...
 
         });
 
@@ -58,7 +58,7 @@ export default class ControllerMasini {
     update = (masina) => {
 
         let position = this.findPozById(masina.id);
-        console.log(masina.tip);
+
         if (position != -1) {
             if (masina.marca != "" && masina.marca) {
                 this.list[position].marca = masina.marca;
@@ -69,12 +69,17 @@ export default class ControllerMasini {
             if (masina.an != "" && masina.an) {
                 this.list[position].an = masina.an;
             }
+
+            if (masina.putere != "" && masina.putere) {
+                this.list[position].putere = masina.putere;
+            }
+            if (masina.noUsers != "" && masina.noUsers) {
+                console.log("aici1");
+                this.list[position].noUsers = masina.noUsers;
+            }
             if (masina.tip != "" && masina.tip) {
                 console.log("aici");
                 this.list[position].tip = masina.tip;
-            }
-            if (masina.putere != "" && masina.putere) {
-                this.list[position].putere = masina.putere;
             }
 
 
@@ -176,6 +181,24 @@ export default class ControllerMasini {
 
     }
 
+    findIdPopularCar = (marca, model) => {
+        let list = this.popular();
+
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].marca == marca && list[i].model == model) {
+
+                return i;
+            }
+
+
+        }
+
+        return 999999999;
+
+    }
+
+
+
     getCarById = (id) => {
 
         for (let i = 0; i < this.list.length; i++) {
@@ -194,7 +217,9 @@ export default class ControllerMasini {
 
         let result = [];
         for (let i = 0; i < this.list.length; i++) {
-            if (this.list[i].noUsers > 50) {
+
+            if (this.list[i].noUsers > 90) {
+
                 result.push(this.list[i]);
 
             }
@@ -202,5 +227,23 @@ export default class ControllerMasini {
         return result;
     }
 
+
+
+
+    searchingName = (name) => {
+
+
+        let results = [];
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].marca.includes(name) || this.list[i].model.includes(name)) {
+
+                results.push(this.list[i]);
+            }
+        }
+
+
+        return results;
+
+    }
 
 }

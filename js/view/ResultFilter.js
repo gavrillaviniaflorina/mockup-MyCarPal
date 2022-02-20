@@ -182,8 +182,24 @@ class Filter {
             let target = e.target;
 
             if (target.tagName == "BUTTON") {
-                new Car();
+
+                let parent = target.parentNode;
+
+
+                let need = parent.firstElementChild.textContent;
+                console.log(need);
+
+                let arr = need.split(' ');
+
+                let marca = arr[0];
+                let model = arr[1];
+                console.log(marca);
+                console.log(model);
+                let controller = new ControllerMasini();
+
+                new Car(controller.findId(marca, model));
             }
+
         })
     }
 

@@ -74,4 +74,18 @@ export default class ControllerPersoane {
         }
     }
 
+
+
+    searchPerson = (email, passoword) => {
+
+        for (let i = 0; i < this.list.length; i++) {
+            if (email == this.list[i].email && passoword == this.list[i].parola) {
+                return this.list[i];
+            }
+        }
+
+        return -1;
+
+    }
+
 }

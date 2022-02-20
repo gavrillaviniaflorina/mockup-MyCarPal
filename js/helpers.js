@@ -8,9 +8,9 @@ let mobileData = {
 
     }],
     labels: [
-        "Desktop",
-        "Tablet",
-        "Phone",
+        "Confort",
+        "Speed",
+        "Sfety",
 
     ],
 

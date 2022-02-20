@@ -1,4 +1,6 @@
 import ControllerMasini from "./js/controller/ControllerMasini.js";
+import ControllerPersoane from "./js/controller/ControllerPersoane.js";
+import AllCars from "./js/view/AllCars.js";
 import Home from "./js/view/Home.js";
 // import AllCars from "./js/view/AllCars.js";
 // import Login from "./js/view/Login.js"
@@ -30,7 +32,6 @@ let home = new Home();
 // //     // console.log(list[i]);
 // // }
 
-let controller = new ControllerMasini();
 
 // for (let i = 0; i < controller.list.length; i++) {
 
@@ -42,3 +43,11 @@ let controller = new ControllerMasini();
 //         controller.update({ id: controller.list[i].id, tip: "hibrid" });
 //     }
 // }
+
+///let view = new AllCars();
+
+//console.log(view.cardsPerPag(1, 5, list));
+
+// let persoana = new ControllerPersoane();
+
+// console.log(persoana.searchPerson("rnasey0@yale.edu", "GjLwxk"));

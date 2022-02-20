@@ -3,6 +3,7 @@ import ControllerMasini from "../controller/ControllerMasini.js";
 import AllCars from "./AllCars.js";
 import Login from "./Login.js";
 import Filter from "./ResultFilter.js";
+import Car from "./Car.js";
 import ResultFilter from "./ResultFilter.js";
 
 class Home {
@@ -18,7 +19,7 @@ class Home {
         this.createHeader();
         this.createAside();
         this.createMain();
-
+        this.handlerSearch();
         this.btnAllCars = document.querySelector(".all");
         this.btnAllCars.addEventListener("click", this.handleClick);
 
@@ -29,6 +30,21 @@ class Home {
 
         this.btnLogin = document.querySelector(".user-login");
         this.btnLogin.addEventListener("click", this.handlerLogin);
+
+        this.btnDown = document.querySelector(".fa-arrow-down");
+        this.btnDown.addEventListener("click", this.handleArrowDownAndRight);
+
+        this.btnUp = document.querySelector(".fa-arrow-up");
+        this.btnUp.addEventListener("click", this.handleArrowUpAndLeft);
+
+        this.btnLeft = document.querySelector(".fa-arrow-left");
+        this.btnLeft.addEventListener("click", this.handleArrowUpAndLeft);
+
+        this.btnRight = document.querySelector(".fa-arrow-right");
+        this.btnRight.addEventListener("click", this.handleArrowDownAndRight);
+
+        this.handleGetOffer();
+
 
     }
 
@@ -169,6 +185,7 @@ class Home {
 
 `;
         this.container.appendChild(main);
+        this.populatePopulars(0);
     }
 
     populateTypesForBrand = () => {
@@ -218,12 +235,28 @@ class Home {
 
     }
 
-    populatePopulars = () => {
+    populatePopulars = (val) => {
 
-        let car = document.createElement("section");
-        car.classList = "car";
+        let controller = new ControllerMasini();
+        let popular = document.querySelector(".most-used");
 
-        car.innerHTML = ` 
+
+
+
+        for (let i = val; i < val + 2; i++) {
+            let car = document.createElement("section");
+
+            let masina = controller.popular()[i];
+
+            car.classList = "car";
+            if (i == val) {
+                car.classList.add("zero");
+            } else {
+                car.classList.add("one");
+            }
+
+
+            car.innerHTML = ` 
         <h3>${masina.marca} ${masina.model}</h3>
         <?xml version="1.0" encoding="iso-8859-1"?>
 
@@ -276,8 +309,77 @@ C444.801,187.101,434.001,213.101,414.401,232.701z"/>
 
 
     `
+
+            let arrow = document.querySelector(".fa-arrow-down")
+            popular.insertBefore(car, arrow);
+        }
+
+
     }
 
+    handleArrowDownAndRight = (e) => {
+
+        let controller = new ControllerMasini();
+
+
+        let car0 = document.querySelector(".zero");
+        let car1 = document.querySelector(".one");
+        let parent = car0.parentElement;
+        let need = car1.firstElementChild.textContent;
+        let arr = need.split(' ');
+
+        let marca = arr[0];
+        let model = arr[1];
+
+
+        let find = controller.findIdPopularCar(marca, model);
+
+
+        if (find <= controller.popular().length) {
+
+
+
+            parent.removeChild(car0);
+            parent.removeChild(car1);
+
+            this.populatePopulars(find);
+        }
+
+
+
+
+
+
+
+    }
+
+    handleArrowUpAndLeft = (e) => {
+
+
+        let controller = new ControllerMasini();
+
+
+        let car0 = document.querySelector(".zero");
+        let car1 = document.querySelector(".one");
+        let parent = car0.parentElement;
+        let need = car0.firstElementChild.textContent;
+        let arr = need.split(' ');
+
+        let marca = arr[0];
+        let model = arr[1];
+
+
+
+        let find = controller.findIdPopularCar(marca, model) - 1;
+
+        if (find > 0) {
+            parent.removeChild(car0);
+            parent.removeChild(car1);
+
+            this.populatePopulars(find);
+        }
+
+    }
 
 
     populateBrands = () => {
@@ -322,6 +424,43 @@ C444.801,187.101,434.001,213.101,414.401,232.701z"/>
     handlerLogin = (e) => {
         new Login();
     }
+
+    handleGetOffer = () => {
+        let main = document.querySelector(".main-home");
+        console.log("aici");
+
+        main.addEventListener("click", (e) => {
+
+
+            let target = e.target;
+
+            if (target.tagName == "BUTTON") {
+
+                let parent = target.parentNode;
+
+
+                let need = parent.firstElementChild.textContent;
+
+
+                let arr = need.split(' ');
+
+                let marca = arr[0];
+                let model = arr[1];
+
+                let controller = new ControllerMasini();
+
+                new Car(controller.findId(marca, model));
+            }
+        })
+
+    }
+
+
+    handlerSearch = () => {
+
+
+    }
+
 
 
 

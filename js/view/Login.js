@@ -1,3 +1,4 @@
+import ControllerPersoane from "../controller/ControllerPersoane.js";
 import Home from "./Home.js";
 
 class Login {
@@ -12,6 +13,10 @@ class Login {
 
         this.btnHome = document.querySelector(".home-button");
         this.btnHome.addEventListener("click", this.handlerReturnHome);
+
+
+        this.btnSignIn = document.querySelector(".in");
+        this.btnSignIn.addEventListener("click", this.handleSignIn);
     }
 
 
@@ -84,8 +89,8 @@ class Login {
             <hr>
         </section>
 
-        <input value="Email">
-        <input value="Password">
+        <input class="email" value="Email">
+        <input class="password" value="Password">
         <button class="in">Sign In</button>
     </section>
 
@@ -97,6 +102,25 @@ class Login {
 
 
         this.container.appendChild(main);
+    }
+
+
+    handleSignIn = (e) => {
+
+
+
+        let email = document.querySelector(".email").value;
+        let password = document.querySelector(".password").value;
+
+
+        let controllerPersoane = new ControllerPersoane();
+        let person = controllerPersoane.searchPerson(email, password);
+
+
+
+        localStorage.setItem("logat", person.id);
+
+
     }
 
 

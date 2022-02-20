@@ -189,6 +189,8 @@ class AllCars {
     populateCars = () => {
         let contollerMasini = new ControllerMasini();
         let list = contollerMasini.list;
+        //let list = this.appendCardsPerPag(1, list1);
+
 
         let main = document.querySelector(".main-all-cars");
 
@@ -262,6 +264,39 @@ class AllCars {
 
     }
 
+
+    cardsPerPag = (nrPag, perPag, arr) => {
+
+
+        let currentPag = 1;
+
+        for (let i = 0; i < arr.length; i = i + perPag) {
+            if (currentPag == nrPag) {
+
+                return arr.slice(i, i + perPag);
+            }
+
+            currentPag++;
+        }
+
+    }
+
+    appendCardsPerPag = (nrPag, arr) => {
+
+        let cards = [];
+        if (window.innerWidth < 720) {
+            cards = cardsPerPag(nrPag, 5, arr);
+        } else if (window.innerWidth < 1024) {
+            cards = cardsPerPag(nrPag, 6, arr);
+        } else {
+            cards = cardsPerPag(nrPag, 9, arr);
+        }
+
+        return cards;
+
+
+    }
+
     populateBrands = () => {
         let controllerMasini = new ControllerMasini();
 
@@ -304,8 +339,7 @@ class AllCars {
         let brand = document.querySelector(".brands");
 
 
-        console.log(type.value);
-        console.log(brand.value);
+
 
         new Filter(brand.value, type.value);
     }
@@ -325,14 +359,13 @@ class AllCars {
 
 
                 let need = parent.firstElementChild.textContent;
-                console.log(need);
+
 
                 let arr = need.split(' ');
 
                 let marca = arr[0];
                 let model = arr[1];
-                console.log(marca);
-                console.log(model);
+
                 let controller = new ControllerMasini();
 
                 new Car(controller.findId(marca, model));
