@@ -396,7 +396,7 @@ template {
   display: grid;
   grid-template-rows: 100px 1fr 1fr 1fr 100px;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "h h" "img img " "basic basic" "now now";
+  grid-template-areas: "h h" "img img " "basic basic" "but but";
 }
 .rent-car h1 {
   grid-area: h;
@@ -418,8 +418,22 @@ template {
   justify-content: space-evenly;
   align-items: center;
 }
+.rent-car .buttons {
+  grid-area: but;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .rent-car .now {
-  grid-area: now;
+  height: 50px;
+  width: 30%;
+  margin: auto;
+  background-color: #d4f0c7;
+  border: nones;
+  border-radius: 10px;
+  color: white;
+}
+.rent-car .login-to {
   height: 50px;
   width: 30%;
   margin: auto;
@@ -431,7 +445,7 @@ template {
 
 @media (min-width: 720px) {
   .rent-car {
-    grid-template-areas: "h h" "img basic" "img basic" "img basic" "now now";
+    grid-template-areas: "h h" "img basic" "img basic" "img basic" "but but";
   }
 }
 

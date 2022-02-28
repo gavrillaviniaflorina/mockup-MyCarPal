@@ -1,0 +1,26 @@
+.rentDetails-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    & fieldset {
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: rgb(212, 240, 199);
+    }
+    & article {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        margin-bottom: 5px;
+    }
+    & button {
+        width: 200px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: rgb(212, 240, 199);
+        margin-top: 20px;
+    }
+}

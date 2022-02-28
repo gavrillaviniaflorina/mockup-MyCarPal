@@ -427,7 +427,7 @@ C444.801,187.101,434.001,213.101,414.401,232.701z"/>
 
     handleGetOffer = () => {
         let main = document.querySelector(".main-home");
-        console.log("aici");
+
 
         main.addEventListener("click", (e) => {
 

@@ -2,6 +2,7 @@ import ControllerMasini from "../controller/ControllerMasini.js";
 import Home from "./Home.js";
 
 import Login from "./Login.js";
+import Rent from "./Rent.js";
 class Car {
 
 
@@ -22,6 +23,9 @@ class Car {
         this.btnLogin = document.querySelector(".user-login");
         this.btnLogin.addEventListener("click", this.handlerLogin);
         this.createChart();
+
+        this.btnRent = document.querySelector(".rent");
+        this.btnRent.addEventListener("click", this.handleRent);
 
     }
 
@@ -68,7 +72,7 @@ class Car {
 
 
         let masina = controllerMasini.getCarById(this.id);
-        console.log(masina);
+
         main.classList = "main-car";
         main.innerHTML = `
         
@@ -77,9 +81,9 @@ class Car {
         <h1>${masina.marca}  ${masina.model}</h1>
 
         <section class="buttons">
-            <button>Add to favorites</button>
-            <button>See offer</button>
-            <button>Rent</button>
+            <button class="add">Add to favorites</button>
+            <button class="offer">See offer</button>
+            <button class="rent">Rent</button>
         </section>
 
 
@@ -98,6 +102,10 @@ class Car {
     
           `
         this.container.appendChild(main);
+    }
+
+    handleRent = (e) => {
+        new Rent(this.id);
     }
 
     handlerLogin = (e) => {
